@@ -95,9 +95,9 @@ public class GameViewManager {
         this.menuStage = menuStage;
         this.menuStage.hide();
         createBackground();
-        createShip(chosenChef);
+        createChef(chosenChef);
         createGameElements(chosenChef);
-        createGameLoop();
+        gameLoop();
         gameStage.show();
     }
 
@@ -144,18 +144,13 @@ public class GameViewManager {
     }
 
 
-
-
-
     private void setNewElementPosition(ImageView image) {
         image.setLayoutX(randomPositionGenerator.nextInt(370));
-        image.setLayoutY(-randomPositionGenerator.nextInt(3200)+600);
+        image.setLayoutY(-randomPositionGenerator.nextInt(500));
     }
 
 
-
-
-    private void createShip(CHEF chosenChef) {
+    private void createChef(CHEF chosenChef) {
         chef = new ImageView(chosenChef.getUrl());
         chef.setLayoutX(GAME_WIDTH/2);
         chef.setLayoutY(GAME_HEIGHT - 90);
@@ -163,7 +158,7 @@ public class GameViewManager {
     }
 
 
-    private void createGameLoop() {
+    private void gameLoop() {
         gameTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -173,7 +168,6 @@ public class GameViewManager {
                 checkIfElementsCollide();
                 moveChef();
             }
-
         };
         gameTimer.start();
     }
@@ -297,7 +291,6 @@ public class GameViewManager {
 
 
     private void removeLife() {
-
         gamePane.getChildren().remove(playerLifes[playerLife]);
         playerLife--;
         if(playerLife < 0) {
