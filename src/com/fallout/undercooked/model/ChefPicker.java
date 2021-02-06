@@ -19,7 +19,6 @@ public class ChefPicker extends VBox {
 
     public ChefPicker(CHEF chef) {
         circleImage = new ImageView(circleNotChoosen);
-        System.out.println(chef.getUrl());
         chefImage = new ImageView(chef.getUrl());
         this.chef= chef;
         isCircleChoosen = false;

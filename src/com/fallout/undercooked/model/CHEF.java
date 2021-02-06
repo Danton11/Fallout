@@ -1,11 +1,10 @@
 package com.fallout.undercooked.model;
 
 public enum CHEF {
-
-    BLUE("/com/fallout/undercooked/model/Spritesheets/blueChef.png","/com/fallout/undercooked/model/Spritesheets/blueChef.png"),
+    PURPLE("/com/fallout/undercooked/model/Spritesheets/purpleChef.png","/com/fallout/undercooked/model/Spritesheets/purpleChef.png"),
     RED("/com/fallout/undercooked/model/Spritesheets/redChef.png","/com/fallout/undercooked/model/Spritesheets/redChef.png"),
     GREEN("/com/fallout/undercooked/model/Spritesheets/greenChef.png","/com/fallout/undercooked/model/Spritesheets/greenChef.png"),
-    PURPLE("/com/fallout/undercooked/model/Spritesheets/purpleChef.png","/com/fallout/undercooked/model/Spritesheets/purpleChef.png");
+    BLUE("/com/fallout/undercooked/model/Spritesheets/largeBlueChef.png","/com/fallout/undercooked/model/Spritesheets/blueChef.png"),;
 
     String urlChef;
     String urlLife;
@@ -15,6 +14,7 @@ public enum CHEF {
         this.urlLife = urlLife;
     }
     public String getUrl() {
+        System.out.println(this.urlChef);
         return this.urlChef;
     }
     public String getUrlLife() {
