@@ -1,7 +1,6 @@
 package com.fallout.undercooked.states;
 
 import com.fallout.undercooked.model.*;
-import com.fallout.undercooked.model.HelpLabel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -41,36 +40,41 @@ public class ViewManager {
         createBackground();
         createLogo();
 
-
     }
 
     private void showSubScene(UndercookedSubScene subScene) {
         if (sceneToHide != null) {
             sceneToHide.moveSubScene();
-        } else {
-            sceneToHide = subScene;
-            subScene.moveSubScene();
-
         }
 
+        sceneToHide = subScene;
+        subScene.moveSubScene();
     }
 
     private void createSubScenes() {
-        helpSubscene = new UndercookedSubScene(new AnchorPane(), 600, 400);
-        mainPane.getChildren().add(helpSubscene);
         createChefChooserSubScene();
-        HelpLabel desc = new HelpLabel("USE THE W A S D KEYS TO MOVE!");
-        desc.setLayoutX(80);
-        desc.setLayoutY(85);
-        helpSubscene.getPane().getChildren().add(desc);
+        createHelpSubScene();
+    }
+
+    private void createHelpSubScene() {
+        helpSubscene = new UndercookedSubScene(new AnchorPane(), 600, 500);
+        mainPane.getChildren().add(helpSubscene);
+        InfoLabel desc1 = new InfoLabel("USE THE W A S D KEYS TO MOVE!");
+        desc1.setLayoutX(80);
+        desc1.setLayoutY(85);
+        InfoLabel desc2 = new InfoLabel("COLLECT ALL THE INGREDIENTS");
+        desc2.setLayoutX(80);
+        desc2.setLayoutY(135);
+        helpSubscene.getPane().getChildren().add(desc1);
+        helpSubscene.getPane().getChildren().add(desc2);
     }
 
     private void createChefChooserSubScene() {
-        startSubscene = new UndercookedSubScene(new AnchorPane(), 600, 350);
+        startSubscene = new UndercookedSubScene(new AnchorPane(), 600, 500);
         mainPane.getChildren().add(startSubscene);
 
         InfoLabel chooseShipLabel = new InfoLabel("CHOOSE YOUR CHEF");
-        chooseShipLabel.setLayoutX(110);
+        chooseShipLabel.setLayoutX(80);
         chooseShipLabel.setLayoutY(25);
         startSubscene.getPane().getChildren().add(chooseShipLabel);
         startSubscene.getPane().getChildren().add(createChefsToChoose());
@@ -94,30 +98,26 @@ public class ViewManager {
                     }
                     chefToPick.setIsCircleChoosen(true);
                     chosenCHEF = chefToPick.getChef();
-
                 }
             });
         }
-
-        box.setLayoutX(300 - (118 * 2));
+        box.setLayoutX(100);
         box.setLayoutY(100);
         return box;
     }
 
     private UndercookedButton createButtonToStart() {
         UndercookedButton startButton = new UndercookedButton("START");
-        startButton.setLayoutX(300);
-        startButton.setLayoutY(300);
+        startButton.setLayoutX(175);
+        startButton.setLayoutY(250);
 
         startButton.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 if (chosenCHEF != null) {
                     GameViewManager gameManager = new GameViewManager();
                     gameManager.createNewGame(mainStage, chosenCHEF);
                 }
-
             }
         });
 
@@ -167,7 +167,6 @@ public class ViewManager {
             @Override
             public void handle(ActionEvent event) {
                 mainStage.close();
-
             }
         });
     }
@@ -180,13 +179,13 @@ public class ViewManager {
     }
 
     private void createBackground() {
-        Image backgroundImage = new Image("com/fallout/undercooked/model/recources/kitchenBackground.png");
+        Image backgroundImage = new Image("com/fallout/undercooked/model/resources/kitchenBackground.png");
         BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, null);
         mainPane.setBackground(new Background(background));
     }
 
     private void createLogo() {
-        ImageView logo = new ImageView("com/fallout/undercooked/model/recources/logo.png");
+        ImageView logo = new ImageView("com/fallout/undercooked/model/resources/logo.png");
         logo.setLayoutX(150);
         logo.setLayoutY(50);
 

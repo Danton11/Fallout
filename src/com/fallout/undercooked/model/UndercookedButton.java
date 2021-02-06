@@ -10,8 +10,8 @@ import javafx.scene.text.Font;
 public class UndercookedButton extends Button{
 
     private final String FONT_PATH = "/assets/kenvector_future.ttf";
-    private final String BUTTON_PRESSED_STYLE = "-fx-background-color: transparent; -fx-background-image: url('/com/fallout/undercooked/model/recources/red_button_pressed.png');";
-    private final String BUTTON_FREE_STYLE = "-fx-background-color: transparent; -fx-background-image: url('/com/fallout/undercooked/model/recources/red_button.png');";
+    private final String BUTTON_PRESSED_STYLE = "-fx-background-color: transparent; -fx-background-image: url('/com/fallout/undercooked/model/resources/red_button_pressed.png');";
+    private final String BUTTON_FREE_STYLE = "-fx-background-color: transparent; -fx-background-image: url('/com/fallout/undercooked/model/resources/red_button.png');";
 
     public UndercookedButton(String text) {
         setText(text);

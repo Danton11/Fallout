@@ -9,8 +9,7 @@ import javafx.util.Duration;
 
 public class UndercookedSubScene extends SubScene{
 
-    private final static String FONT_PATH = "com/fallout/undercooked/model/recources/black.png";
-    private final static String BACKGROUND_IMAGE = "com/fallout/undercooked/model/recources/red_panel.png";
+    private final static String BACKGROUND_IMAGE = "com/fallout/undercooked/model/resources/red_panel.png";
 
     private  boolean isHidden;
 
@@ -18,7 +17,7 @@ public class UndercookedSubScene extends SubScene{
         super(parent, v, v1);
         prefWidth(v);
         prefHeight(v1);
-        parent.setLayoutX(100);
+        parent.setLayoutX(80);
         //parent.setLayoutY(300);
 
         BackgroundImage image = new BackgroundImage(new Image(BACKGROUND_IMAGE, 600, 400, false, true),
@@ -27,7 +26,7 @@ public class UndercookedSubScene extends SubScene{
         AnchorPane root2 = (AnchorPane) this.getRoot();
         root2.setBackground(new Background(image));
 
-        isHidden = true ;
+        isHidden = true;
 
         setLayoutX(900);
         setLayoutY(180);
@@ -41,17 +40,13 @@ public class UndercookedSubScene extends SubScene{
         transition.setNode(this);
 
         if (isHidden) {
-
             transition.setToX(-676);
             isHidden = false;
 
         } else {
-
             transition.setToX(0);
             isHidden = true ;
         }
-
-
         transition.play();
     }
 

@@ -10,8 +10,8 @@ public class ChefPicker extends VBox {
     private ImageView circleImage;
     private ImageView chefImage;
 
-    private String circleNotChoosen = "com/fallout/undercooked/model/recources/grey_circle.png";
-    private String circleChoosen = "com/fallout/undercooked/model/recources/red_choosen.png";
+    private String circleNotChoosen = "com/fallout/undercooked/model/resources/grey_circle.png";
+    private String circleChoosen = "com/fallout/undercooked/model/resources/red_choosen.png";
 
     private CHEF chef;
 
@@ -19,9 +19,7 @@ public class ChefPicker extends VBox {
 
     public ChefPicker(CHEF chef) {
         circleImage = new ImageView(circleNotChoosen);
-        String chefUrl = chef.getUrl();
-        System.out.println(chefUrl);
-        chefImage = new ImageView(chefUrl);
+        chefImage = new ImageView(chef.getUrl());
         this.chef= chef;
         isCircleChoosen = false;
         this.setAlignment(Pos.CENTER);

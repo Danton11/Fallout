@@ -15,7 +15,7 @@ import javafx.scene.text.Font;
 
         public final static String FONT_PATH = "/resources/kenvector_future.ttf";
 
-        public final static String BACKGROUND_IMAGE = "com/fallout/undercooked/model/recources/red_info_label.png";
+        public final static String BACKGROUND_IMAGE = "com/fallout/undercooked/model/resources/red_info_label.png";
 
 
         public InfoLabel(String text) {
