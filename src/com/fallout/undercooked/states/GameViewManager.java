@@ -151,7 +151,7 @@ public class GameViewManager {
 
 
     private void createChef(CHEF chosenChef) {
-        chef = new ImageView(chosenChef.getUrl());
+        chef = new ImageView(chosenChef.getUrlLife());
         chef.setLayoutX(GAME_WIDTH/2);
         chef.setLayoutY(GAME_HEIGHT - 90);
         gamePane.getChildren().add(chef);
