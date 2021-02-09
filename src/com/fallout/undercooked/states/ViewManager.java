@@ -28,6 +28,7 @@ public class ViewManager {
     private UndercookedSubScene startSubscene;
     private UndercookedSubScene sceneToHide;
     private CHEF chosenCHEF;
+    private ChefPlayer chefPlayer;
 
     public ViewManager() {
         menuButtons = new ArrayList<>();
@@ -115,8 +116,10 @@ public class ViewManager {
             @Override
             public void handle(ActionEvent event) {
                 if (chosenCHEF != null) {
+                    chefPlayer = new ChefPlayer(chosenCHEF,chosenCHEF.getImageView());
+
                     GameViewManager gameManager = new GameViewManager();
-                    gameManager.createNewGame(mainStage, chosenCHEF);
+                    gameManager.createNewGame(mainStage, chefPlayer);
                 }
             }
         });

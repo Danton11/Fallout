@@ -1,9 +1,11 @@
 package com.fallout.undercooked.states;
 
 import com.fallout.undercooked.model.CHEF;
+import com.fallout.undercooked.model.ChefPlayer;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -23,6 +25,7 @@ public class GameViewManager {
     private Stage gameStage;
     private Stage menuStage;
     private ImageView chef;
+    private ChefPlayer chefPlayer;
     private boolean isLeftKeyPressed;
     private boolean isRightKeyPressed;
     private boolean isUpKeyPressed;
@@ -39,6 +42,7 @@ public class GameViewManager {
     private final static String GOLD_STAR_IMAGE = "com/fallout/undercooked/model/Spritesheets/Fruit.png";
     private final static int CHEF_RADIUS = 50;
     private final static int ITEM_RADIUS = 27;
+    private final static int direction = 0;
 
 
     public GameViewManager() {
@@ -90,8 +94,7 @@ public class GameViewManager {
         gameStage.setScene(gameScene);
     }
 
-    public void createNewGame(Stage menuStage, CHEF chosenChef) {
-
+    public void createNewGame(Stage menuStage, ChefPlayer chosenChef) {
         this.menuStage = menuStage;
         this.menuStage.hide();
         createBackground();
@@ -101,11 +104,8 @@ public class GameViewManager {
         gameStage.show();
     }
 
-    private void createGameElements(CHEF chosenChef) {
+    private void createGameElements(ChefPlayer chosenChef) {
         playerLife = 2;
-//        star = new ImageView(GOLD_STAR_IMAGE);
-//        setNewElementPosition(star);
-//        gamePane.getChildren().add(star);
         pointsLabel = new SmallInfoLabel("POINTS : 00");
         pointsLabel.setLayoutX(700);
         pointsLabel.setLayoutY(20);
@@ -123,7 +123,6 @@ public class GameViewManager {
     private void moveGameElements() {
         //star.setLayoutY(star.getLayoutY() + 5);
     }
-
     private void checkIfElementAreBehindTheChefAndRelocated() {
 
 //        if(star.getLayoutY() > 1200) {
@@ -142,19 +141,18 @@ public class GameViewManager {
             }
         }*/
     }
-
-
     private void setNewElementPosition(ImageView image) {
         image.setLayoutX(randomPositionGenerator.nextInt(370));
         image.setLayoutY(-randomPositionGenerator.nextInt(500));
     }
 
 
-    private void createChef(CHEF chosenChef) {
-        chef = new ImageView(chosenChef.getUrlLife());
-        chef.setLayoutX(GAME_WIDTH/2);
-        chef.setLayoutY(GAME_HEIGHT - 90);
-        gamePane.getChildren().add(chef);
+    private void createChef(ChefPlayer chosenChef) {
+        //chef = new ImageView(chosenChef.getUrlLife());
+        chefPlayer = chosenChef;
+        chefPlayer.setLayoutX(GAME_WIDTH/2);
+        chefPlayer.setLayoutY(GAME_HEIGHT - 90);
+        gamePane.getChildren().add(chefPlayer);
     }
 
 
@@ -162,7 +160,6 @@ public class GameViewManager {
         gameTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                //moveBackground();
                 moveGameElements();
                 checkIfElementAreBehindTheChefAndRelocated();
                 checkIfElementsCollide();
@@ -173,52 +170,48 @@ public class GameViewManager {
     }
 
     private void moveChef() {
-
         if (isLeftKeyPressed && !isRightKeyPressed) {
             if(angle > -30) {
                 angle -= 5;
             }
-            chef.setRotate(angle);
-            if(chef.getLayoutX() > -10) {
-                chef.setLayoutX(chef.getLayoutX() - 0.5);
+            //chef.setRotate(angle);
+            if(chefPlayer.getLayoutX() > -10) {
+                //chef.setLayoutX(chef.getLayoutX() - 0.5);
+                chefPlayer.moveX(-1);
             }
         }
-
         if (isRightKeyPressed && !isLeftKeyPressed) {
             if(angle < 30) {
                 angle += 5;
             }
-            chef.setRotate(angle);
-            if(chef.getLayoutX() < 880) {
-                chef.setLayoutX(chef.getLayoutX() + 0.5);
+            //chef.setRotate(angle);
+            if(chefPlayer.getLayoutX() < 880) {
+                //chef.setLayoutX(chef.getLayoutX() + 0.5);
+                chefPlayer.moveX(1);
             }
         }
-
         if (!isLeftKeyPressed && !isRightKeyPressed) {
             if(angle < 0) {
                 angle += 5;
             } else if (angle > 0) {
                 angle -= 5;
             }
-            chef.setRotate(angle);
         }
-
         if (isLeftKeyPressed &&  isRightKeyPressed) {
             if(angle < 0) {
                 angle += 5;
             } else if (angle > 0) {
                 angle -= 5;
             }
-            chef.setRotate(angle);
         }
         if (isUpKeyPressed &&  !isDownKeyPressed) {
-            if(chef.getLayoutY() < 1000) {
-                chef.setLayoutY(chef.getLayoutY() - 0.5);
+            if(chefPlayer.getLayoutY() < 1000) {
+                chefPlayer.moveY(-1);
             }
         }
         if (!isUpKeyPressed && isDownKeyPressed) {
-            if(chef.getLayoutY() < 1000) {
-                chef.setLayoutY(chef.getLayoutY() + 0.5);
+            if(chefPlayer.getLayoutY() < 1000) {
+                chefPlayer.moveY(1);
             }
         }
     }
@@ -227,17 +220,17 @@ public class GameViewManager {
         gridPane1 = new GridPane();
         gridPane2 = new GridPane();
 
-        for (int i = 0 ; i < 12; i++) {
-            ImageView backgroundImage1 = new ImageView("com/fallout/undercooked/model/resources/black.png");
-            ImageView backgroundImage2 = new ImageView("com/fallout/undercooked/model/resources/black.png");
+        for (int i = 0 ; i < 1; i++) {
+            ImageView backgroundImage1 = new ImageView("com/fallout/undercooked/model/resources/bkgTest.png");
+            //ImageView backgroundImage2 = new ImageView("com/fallout/undercooked/model/resources/bkgTest.png");
             GridPane.setConstraints(backgroundImage1, i% 3, i / 3 );
-            GridPane.setConstraints(backgroundImage2, i% 3, i / 3 );
+            //GridPane.setConstraints(backgroundImage2, i% 3, i / 3 );
             gridPane1.getChildren().add(backgroundImage1);
-            gridPane2.getChildren().add(backgroundImage2);
+            //gridPane2.getChildren().add(backgroundImage2);
         }
 
         gridPane2.setLayoutY(- 1024);
-        gamePane.getChildren().addAll(gridPane1, gridPane2);
+        gamePane.getChildren().addAll(gridPane1);
     }
 
     private void moveBackground() {
@@ -252,7 +245,6 @@ public class GameViewManager {
             gridPane2.setLayoutY(-1024);
         }
     }
-
     private void checkIfElementsCollide() {
 //        if(SHIP_RADIUS + STAR_RADIUS > calculateDistance(chef.getLayoutX() + 49, star.getLayoutX() + 15,
 //                chef.getLayoutY() + 37, star.getLayoutY() + 15)) {
@@ -288,8 +280,6 @@ public class GameViewManager {
 
         }*/
     }
-
-
     private void removeLife() {
         gamePane.getChildren().remove(playerLifes[playerLife]);
         playerLife--;
@@ -299,7 +289,6 @@ public class GameViewManager {
             menuStage.show();
         }
     }
-
     private double calculateDistance(double x1, double x2, double y1, double y2) {
         return Math.sqrt(Math.pow(x1-x2, 2) + Math.pow(y1-y2, 2));
     }
