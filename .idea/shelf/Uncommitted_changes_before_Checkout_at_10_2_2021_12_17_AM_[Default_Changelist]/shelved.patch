@@ -1,0 +1,29 @@
+Index: .idea/libraries/lib.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"libraryTable\">\r\n  <library name=\"lib\">\r\n    <CLASSES>\r\n      <root url=\"file://$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib\" />\r\n    </CLASSES>\r\n    <JAVADOC />\r\n    <SOURCES>\r\n      <root url=\"file://$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib\" />\r\n    </SOURCES>\r\n    <jarDirectory url=\"file://$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib\" recursive=\"false\" />\r\n    <jarDirectory url=\"file://$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib\" recursive=\"false\" type=\"SOURCES\" />\r\n  </library>\r\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/lib.xml b/.idea/libraries/lib.xml
+--- a/.idea/libraries/lib.xml	(revision 3c1faa4ba4c5fc3ea880c9069b6ae09410740d92)
++++ b/.idea/libraries/lib.xml	(date 1612887414159)
+@@ -1,13 +1,13 @@
+ <component name="libraryTable">
+   <library name="lib">
+     <CLASSES>
+-      <root url="file://$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib" />
++      <root url="file://$PROJECT_DIR$/../../javafx-sdk-15.0.1/lib" />
+     </CLASSES>
+     <JAVADOC />
+     <SOURCES>
+-      <root url="file://$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib" />
++      <root url="file://$PROJECT_DIR$/../../javafx-sdk-15.0.1/lib" />
+     </SOURCES>
+-    <jarDirectory url="file://$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib" recursive="false" />
+-    <jarDirectory url="file://$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
++    <jarDirectory url="file://$PROJECT_DIR$/../../javafx-sdk-15.0.1/lib" recursive="false" />
++    <jarDirectory url="file://$PROJECT_DIR$/../../javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
+   </library>
+ </component>
+\ No newline at end of file
